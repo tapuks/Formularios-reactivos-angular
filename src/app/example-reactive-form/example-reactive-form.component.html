@@ -1,0 +1,46 @@
+<h1>Exercise form</h1>
+<form [formGroup]="formExample">
+  <label for="Name">Name</label>
+  <input id="Name" name="Name" formControlName="name" />
+
+  <label for="Email">Email</label>
+  <input id="Email" name="Email" formControlName="email" />
+
+  <label for="BirthDate">Birth Date</label>
+  <input id="BirthDate" name="BirthDate" formControlName="birthdate" />
+
+  <label for="Age">Age</label>
+  <input id="Age" name="Age" formControlName="age" />
+
+  <div *ngIf="!isCandidateForPermanentDNI">
+    <label for="DNIExpiryDate ">DNI Expiry Date</label>
+    <input
+      id="DNIExpiryDate"
+      name="DNIExpiryDate"
+      formControlName="dniexpirydate"
+    />
+  </div>
+  <div *ngIf="isCandidateForPermanentDNI">
+    <label for="PermmanentDni">Permanente DNi</label>
+    <input
+      type="checkbox"
+      id="PermmanentDni"
+      name="PermmanentDni"
+      formControlName="permanentdni"
+    />
+  </div>
+  <fieldset formGroupName="address">
+    <label for="Street">Street</label>
+    <input id="Street" name="Street" formControlName="street" />
+
+    <label for="City">City</label>
+    <input id="City" name="City" formControlName="city" />
+
+    <label for="Postalcode">Postal Code</label>
+    <input id="Postalcode" name="Postalcode" formControlName="postalcode" />
+  </fieldset>
+  <div>
+    <button [disabled]="formExample.invalid" (click)="log()">Submit</button>
+    <button (click)="clean()">Clean</button>
+  </div>
+</form>
